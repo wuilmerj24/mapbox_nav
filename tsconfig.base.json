@@ -20,7 +20,11 @@
       }
     ],
     "paths": {
-      "@demo/shared": ["tools/demo/index.ts"]
+      "@demo/shared": ["tools/demo/index.ts"],
+      "@arepa/*": ["packages/*"],
+      "@arepa/timeranger": ["packages/timeranger/index.d.ts"],
+      "@arepa/time-range": ["packages/time-range/index.d.ts"],
+      "@arepa/sentryio": ["packages/sentryio/index.d.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

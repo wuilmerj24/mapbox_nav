@@ -1,0 +1,9 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:tr="@arepa/time-range" navigatingTo="navigatingTo" class="page">
+    <Page.actionBar>
+        <ActionBar title="time-range" icon="" class="action-bar">
+        </ActionBar>
+    </Page.actionBar>
+    <StackLayout class="p-20">
+      <tr:TimeRange drag="{{testIt}}" onTimeChangeEvent="onDrag" loaded="onLoad"/>
+    </StackLayout>
+</Page>

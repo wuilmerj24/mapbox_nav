@@ -55,12 +55,33 @@ module.exports = {
       },
     },
     '⚙️': {
-      script: `npx cowsay "@nativescript/* packages will keep your ⚙️ cranking"`,
-      description: '_____________  @nativescript/*  _____________',
+      script: `npx cowsay "@arepa/* packages will keep your ⚙️ cranking"`,
+      description: '_____________  @arepa/*  _____________',
     },
     // packages
     // build output is always in dist/packages
-    '@nativescript': {
+    '@arepa': {
+      // @arepa/timeranger
+      timeranger: {
+        build: {
+          script: 'nx run timeranger:build.all',
+          description: '@arepa/timeranger: Build',
+        },
+      },
+      // @arepa/time-range
+      'time-range': {
+        build: {
+          script: 'nx run time-range:build.all',
+          description: '@arepa/time-range: Build',
+        },
+      },
+      // @arepa/sentryio
+      sentryio: {
+        build: {
+          script: 'nx run sentryio:build.all',
+          description: '@arepa/sentryio: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -71,8 +92,20 @@ module.exports = {
       description: '_____________  Focus (VS Code supported)  _____________',
     },
     focus: {
+      timeranger: {
+        script: 'nx run timeranger:focus',
+        description: 'Focus on @arepa/timeranger',
+      },
+      'time-range': {
+        script: 'nx run time-range:focus',
+        description: 'Focus on @arepa/time-range',
+      },
+      sentryio: {
+        script: 'nx run sentryio:focus',
+        description: 'Focus on @arepa/sentryio',
+      },
       reset: {
-        script: 'nx g @nativescript/plugin-tools:focus-packages',
+        script: 'nx g @arepa/plugin-tools:focus-packages',
         description: 'Reset Focus',
       },
     },
