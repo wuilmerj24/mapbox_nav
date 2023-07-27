@@ -2,10 +2,79 @@ import { Application, Color, Utils } from '@nativescript/core';
 import { TimeRangeCommon, ITimeRangeEvents } from './common';
 import { ETimeRangeEvents } from './events';
 
+export class TimeData {
+  _native: nl.joery.timerangepicker.TimeRangePicker.Time;
+
+  static fromNative(value: nl.joery.timerangepicker.TimeRangePicker.Time): TimeData {
+    if (value instanceof nl.joery.timerangepicker.TimeRangePicker.Time) {
+      const ret = new TimeData();
+      ret._native = value;
+      return ret;
+    }
+    return null;
+  }
+
+  get native() {
+    return this._native;
+  }
+
+  get hour() {
+    return this.native.getHour();
+  }
+
+  get minute() {
+    return this.native.getMinute();
+  }
+
+  toString() {
+    return this.native.toString();
+  }
+}
+
+export class TimeDurationData {
+  _native: nl.joery.timerangepicker.TimeRangePicker.TimeDuration;
+
+  static fromNative(value: nl.joery.timerangepicker.TimeRangePicker.TimeDuration): TimeDurationData {
+    if (value instanceof nl.joery.timerangepicker.TimeRangePicker.TimeDuration) {
+      const ret = new TimeDurationData();
+      ret._native = value;
+      return ret;
+    }
+    return null;
+  }
+
+  get native() {
+    return this._native;
+  }
+
+  get start() {
+    return TimeData.fromNative(this.native.getStart());
+  }
+
+  get end() {
+    return TimeData.fromNative(this.native.getEnd());
+  }
+
+  get hour() {
+    return this.native.getHour();
+  }
+
+  get minute() {
+    return this.native.getMinute();
+  }
+
+  get duration() {
+    return this.native.getDuration().toMillis();
+  }
+
+  toString() {
+    return this.native.toString();
+  }
+}
+
 export class TimeRange extends TimeRangeCommon {
-  public events: ITimeRangeEvents;
-  owner: WeakRef<any> = new WeakRef<any>(this);
   timeRanger: nl.joery.timerangepicker.TimeRangePicker;
+
   createNativeView(): Object {
     this.timeRanger = new nl.joery.timerangepicker.TimeRangePicker(this._context);
 
@@ -37,35 +106,32 @@ export class TimeRange extends TimeRangeCommon {
 
       this.timeRanger.setThumbIconEndRes(resId);
       this.timeRanger.setThumbIconStartRes(resId);
-      const that = this;
       const ref = new WeakRef(this);
       this.timeRanger.setOnDragChangeListener(
         new nl.joery.timerangepicker.TimeRangePicker.OnDragChangeListener({
           onDragStart(param0) {
-            const owner = ref.get();
-            console.log('param ', param0);
-            owner?.sendEvent(TimeRange.onDragEvent, param0);
+            ref.get()?.sendEvent(TimeRange.dragEvent, param0);
             return true;
           },
           onDragStop(param0) {
-            const owner = ref.get();
-            console.log('param ', param0);
-            owner?.sendEvent(TimeRange.onDragEvent, param0);
+            ref.get()?.sendEvent(TimeRange.dragEvent, param0);
           },
         })
       );
 
-      // this.timeRanger.setOnTimeChangeListener(new nl.joery.timerangepicker.TimeRangePicker.OnTimeChangeListener({
-      //     onDurationChange(param0) {
-      //         that.sendEvent(TimeRange.onTimeChangeEvent,param0);
-      //     },
-      //     onEndTimeChange(param0) {
-      //         that.sendEvent(TimeRange.onTimeChangeEvent,param0);
-      //     },
-      //     onStartTimeChange(param0) {
-      //         that.sendEvent(TimeRange.onTimeChangeEvent,param0);
-      //     },
-      // }))
+      this.timeRanger.setOnTimeChangeListener(
+        new nl.joery.timerangepicker.TimeRangePicker.OnTimeChangeListener({
+          onDurationChange(param0) {
+            ref?.get()?.sendEvent(TimeRange.timeChangeEvent, TimeDurationData.fromNative(param0));
+          },
+          onEndTimeChange(param0) {
+            ref?.get()?.sendEvent(TimeRange.timeChangeEvent, TimeData.fromNative(param0));
+          },
+          onStartTimeChange(param0) {
+            ref?.get()?.sendEvent(TimeRange.timeChangeEvent, TimeData.fromNative(param0));
+          },
+        })
+      );
     } catch (error) {
       console.error(`error ${error}`);
     }

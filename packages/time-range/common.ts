@@ -1,13 +1,11 @@
-import { ContentView } from '@nativescript/core';
+import { ContainerView } from '@nativescript/core';
 import { ETimeRangeEvents } from './events';
 import { TimeRange } from '.';
 
-export abstract class TimeRangeCommon extends ContentView implements TimeRange {
-  public events: any;
-  public static onDragEvent = ETimeRangeEvents.OnDragEvent;
-  public static onTimeChangeEvent = ETimeRangeEvents.OnTimeChangeEvent;
+export abstract class TimeRangeCommon extends ContainerView implements TimeRange {
+  public static dragEvent = ETimeRangeEvents.OnDragEvent;
+  public static timeChangeEvent = ETimeRangeEvents.OnTimeChangeEvent;
   public sendEvent(eventName: string, data?: any, msg?: string) {
-    console.log('call sendEvent: ', eventName);
     this.notify({
       eventName,
       object: this,
