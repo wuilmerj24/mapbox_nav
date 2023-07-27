@@ -4,6 +4,6 @@
         </ActionBar>
     </Page.actionBar>
     <StackLayout class="p-20">
-      <tr:TimeRange drag="{{testIt}}" onTimeChangeEvent="onDrag" loaded="onLoad"/>
+      <tr:TimeRange drag="{{testIt}}" timeChange="onDrag" loaded="onLoad"/>
     </StackLayout>
 </Page>

@@ -3,8 +3,7 @@ import { OnDragEvent, OnTimeChangeEvent, TimeRangerLoadedEvent, ETimeRangeEvents
 
 export * from './events';
 
-export declare class TimeRange extends ContentView {
-  events: ITimeRangeEvents;
+export declare class TimeRange extends ContainerView {
   public static onDragEvent: ETimeRangeEvents.OnDragEvent;
   public static onTimeChangeEvent: ETimeRangeEvents.OnTimeChangeEvent;
 }

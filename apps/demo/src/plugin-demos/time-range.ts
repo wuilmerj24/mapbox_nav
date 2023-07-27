@@ -8,7 +8,7 @@ export function navigatingTo(args: EventData) {
 }
 
 export function onDrag(args) {
-  console.log('ss ', args);
+  console.log('ss ', args.data);
 }
 
 export function onLoad(args) {
