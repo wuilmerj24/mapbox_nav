@@ -1,9 +1,9 @@
-import { EventData } from '@nativescript/core';
+import { EventData, Observable } from '@nativescript/core';
 import { TimeRange } from '.';
 
 export enum ETimeRangeEvents {
   OnDragEvent = 'drag',
-  OnTimeChangeEvent = 'timeChangeEvent',
+  OnTimeChangeEvent = 'timeChange',
 }
 
 export interface OnDragEvent extends EventData {
@@ -19,5 +19,5 @@ export interface OnTimeChangeEvent extends EventData {
 export interface TimeRangerLoadedEvent extends EventData {
   eventName: 'loaded';
   data: any;
-  object: TimeRange;
+  object: Observable & TimeRange;
 }
