@@ -5,31 +5,8 @@
     </Page.actionBar>
     <StackLayout class="p-20">
       <tr:TimeRange 
-        drag="onDrag" 
-        timeChange="onTime" 
-        loaded="onLoad" 
-        startTime="10" 
-        endTime="12" 
-        sliderColor="blue" 
-        clockLabelColor="green"
-        clockTickColor="cyan"
-        maxDurationMinutes="1"
-        sliderRangeColor="yellow"
-        thumbColor="black"
-        sliderRangeGradientEnd="#ccc"
-        sliderRangeGradientMiddle="red"
-        sliderRangeGradientStart="blue"
-        timeStepMinutes="1"
-        clockVisible="true"
-        clockLabelSize="20"
-        sliderWidth="10"
-        thumbIconSize="100"
-        thumbSize="100"
-        thumbIconStartRes="icon"
-        thumbIconEndRes="icon"
-
-        clockFace="APPLE"
-        hourFormat="FORMAT_SYSTEM"
+        width="20%"
+        height="20%"
       />
     </StackLayout>
 </Page>
