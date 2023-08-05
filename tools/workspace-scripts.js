@@ -82,6 +82,13 @@ module.exports = {
           description: '@arepa/sentryio: Build',
         },
       },
+      // @arepa/sentryio
+      sentryio: {
+        build: {
+          script: 'nx run sentryio:build.all',
+          description: '@arepa/sentryio: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -99,6 +106,10 @@ module.exports = {
       'time-range': {
         script: 'nx run time-range:focus',
         description: 'Focus on @arepa/time-range',
+      },
+      sentryio: {
+        script: 'nx run sentryio:focus',
+        description: 'Focus on @arepa/sentryio',
       },
       sentryio: {
         script: 'nx run sentryio:focus',

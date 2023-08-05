@@ -5,7 +5,8 @@
   "repository": "<fill-your-repository-here>",
   "dependencies": {
     "@nativescript/core": "file:../../node_modules/@nativescript/core",
-    "@arepa/time-range": "file:../../packages/time-range"
+    "@arepa/time-range": "file:../../packages/time-range",
+    "@arepa/sentryio": "file:../../packages/sentryio"
   },
   "devDependencies": {
     "@nativescript/android": "~8.4.0",

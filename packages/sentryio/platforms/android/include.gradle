@@ -1,0 +1,9 @@
+android{
+    defaultConfig{
+        multiDexEnabled true
+    }
+}
+
+dependencies {
+    implementation "io.sentry:sentry-android:6.27.0"
+}

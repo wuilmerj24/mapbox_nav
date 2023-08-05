@@ -1,3 +1,4 @@
+- [@arepa/sentryio](packages/sentryio/README.md)
 - [@arepa/time-range](packages/time-range/README.md)
 
 # How to use?
