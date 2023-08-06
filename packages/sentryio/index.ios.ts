@@ -518,9 +518,6 @@ export class Sentryio extends SentryioCommon {
       if (options.viewHierarchyExporters !== undefined && options.viewHierarchyExporters !== null) {
         that.viewHierarchyExporters = options.viewHierarchyExporters;
       }
-      const sentryEvent: SentryEvent = SentryEvent.new();
-
-      config.beforeSend(sentryEvent);
     });
   }
 
