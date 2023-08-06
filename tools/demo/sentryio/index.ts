@@ -24,11 +24,12 @@ export class DemoSharedSentryio extends DemoSharedBase {
   }
 
   captureException() {
-    try {
-      throw new Error('error');
-    } catch (error) {
-      this.sentryio.captureException(error);
-    }
+    // try {
+    //   throw new Error('error');
+    // } catch (error) {
+    //   this.sentryio.captureException(error);
+    // }
+    this.sentryio.captureException('Es un error de prueba');
   }
 
   captureMessage() {

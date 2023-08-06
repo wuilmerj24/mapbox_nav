@@ -30,7 +30,7 @@ export class Sentryio extends SentryioCommon {
   set debug(value: boolean) {
     if (value != null || value != undefined) {
       this._debug = value;
-      this.config.setDebug(true);
+      this.config.setDebug(value);
       this.printf('setDebug');
     }
   }

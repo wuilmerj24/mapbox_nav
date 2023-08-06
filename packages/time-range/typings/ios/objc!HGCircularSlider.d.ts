@@ -99,6 +99,12 @@ declare class RangeCircularSlider extends CircularSlider {
 
   distance: number;
 
+  endPointValue: number;
+
+  startPointValue: number;
+
+  startThumbImage: UIImage;
+
   startThumbStrokeColor: UIColor;
 
   startThumbStrokeHighlightedColor: UIColor;
