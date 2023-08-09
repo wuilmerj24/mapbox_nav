@@ -1,4 +1,6 @@
 import { OptionsInit } from './interfaces/options.init';
+export * from '.';
+
 export abstract class SentryioCommon {
   abstract init(options: OptionsInit);
   protected abstract printf(...args: any[]);
