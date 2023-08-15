@@ -1,3 +1,4 @@
+- [@arepa/mapbox-navigator](packages/mapbox-navigator/README.md)
 - [@arepa/sentryio](packages/sentryio/README.md)
 - [@arepa/time-range](packages/time-range/README.md)
 

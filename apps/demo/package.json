@@ -6,7 +6,8 @@
   "dependencies": {
     "@nativescript/core": "file:../../node_modules/@nativescript/core",
     "@arepa/time-range": "file:../../packages/time-range",
-    "@arepa/sentryio": "file:../../packages/sentryio"
+    "@arepa/sentryio": "file:../../packages/sentryio",
+    "@arepa/mapbox-navigator": "file:../../packages/mapbox-navigator"
   },
   "devDependencies": {
     "@nativescript/android": "~8.4.0",

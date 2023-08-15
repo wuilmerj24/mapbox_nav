@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
 export class HomeComponent {
   demos = [
     {
+      name: 'mapbox-navigator',
+    },
+    {
       name: 'sentryio',
     },
     {

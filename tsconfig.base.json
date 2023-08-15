@@ -24,7 +24,9 @@
       "@arepa/*": ["packages/*"],
       "@arepa/timeranger": ["packages/timeranger/index.d.ts"],
       "@arepa/time-range": ["packages/time-range/index.d.ts"],
-      "@arepa/sentryio": ["packages/sentryio/index.d.ts"]
+      "@arepa/sentryio": ["packages/sentryio/index.d.ts"],
+      "@arepa/rethinkdb": ["packages/rethinkdb/index.d.ts"],
+      "@arepa/mapbox-navigator": ["packages/mapbox-navigator/index.d.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

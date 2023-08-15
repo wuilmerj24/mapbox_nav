@@ -89,6 +89,20 @@ module.exports = {
           description: '@arepa/sentryio: Build',
         },
       },
+      // @arepa/rethinkdb
+      rethinkdb: {
+        build: {
+          script: 'nx run rethinkdb:build.all',
+          description: '@arepa/rethinkdb: Build',
+        },
+      },
+      // @arepa/mapbox-navigator
+      'mapbox-navigator': {
+        build: {
+          script: 'nx run mapbox-navigator:build.all',
+          description: '@arepa/mapbox-navigator: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -114,6 +128,14 @@ module.exports = {
       sentryio: {
         script: 'nx run sentryio:focus',
         description: 'Focus on @arepa/sentryio',
+      },
+      rethinkdb: {
+        script: 'nx run rethinkdb:focus',
+        description: 'Focus on @arepa/rethinkdb',
+      },
+      'mapbox-navigator': {
+        script: 'nx run mapbox-navigator:focus',
+        description: 'Focus on @arepa/mapbox-navigator',
       },
       reset: {
         script: 'nx g @arepa/plugin-tools:focus-packages',

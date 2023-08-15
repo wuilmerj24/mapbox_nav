@@ -27,6 +27,7 @@ export class TimeRange extends TimeRangeCommon {
 
   initNativeView(): void {
     super.initNativeView();
+
     // this.timeRanger.startThumbStrokeColor=new Color('green').ios;
     // this.timeRanger.startThumbStrokeHighlightedColor=new Color('blue').ios;
     // this.timeRanger.startThumbTintColor=new Color('cyan').ios;

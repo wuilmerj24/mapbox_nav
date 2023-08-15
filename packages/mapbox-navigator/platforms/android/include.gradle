@@ -1,0 +1,40 @@
+repositories {
+    google()
+    mavenCentral()
+    maven {
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            // url 'https://api.mapbox.com/downloads/v2/snapshots/maven'
+            authentication {
+            basic(BasicAuthentication)
+        }
+        credentials {
+            // Do not change the username below.
+            // This should always be `mapbox` (not your username).
+            username = "mapbox"
+            // Use the secret token you stored in gradle.properties as the password
+            password = "sk.eyJ1Ijoid3VpbG1lcmoyNCIsImEiOiJjbGp4bnA1eTcwMXg2M2txZXdrdzVyZzcxIn0.-5v9aJxrWhranZpgA9GAxA"
+        }
+    }
+}
+
+android {
+    compileSdkVersion 33
+    buildToolsVersion "33.0.0"
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 33
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies{
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation "com.mapbox.navigation:android:2.14.1"
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+    //implementation "com.mapbox.navigation:ui-dropin:2.14.1"
+}
