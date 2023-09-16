@@ -6,6 +6,7 @@ export abstract class TimeRangeCommon extends ContainerView implements TimeRange
   public static dragEvent = ETimeRangeEvents.OnDragEvent;
   public static timeChangeEvent = ETimeRangeEvents.OnTimeChangeEvent;
   public sendEvent(eventName: string, data?: ITimeDataBack, msg?: string) {
+    console.log('eventName ', eventName);
     this.notify({
       eventName,
       object: this,

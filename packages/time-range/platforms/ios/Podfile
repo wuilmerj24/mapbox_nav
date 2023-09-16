@@ -1,1 +1,4 @@
+platform :ios, '9.0'
 pod 'HGCircularSlider', :git => 'https://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@github.com/MariaC15/circularslider_swift.git', :branch => 'master'
+pod '10Clock', :git => 'https://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@github.com/MariaC15/10clock_new.git'
+pod 'MSCircularSlider'

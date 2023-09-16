@@ -1,5 +1,28 @@
-import { Screen, Color, Application, GestureEvents } from '@nativescript/core';
-import { TimeRangeCommon } from './common';
+import { Screen, Color, Application, GestureEvents, Utils } from '@nativescript/core';
+import { TimeRangeCommon, clockFaceProperty, clockLabelColorProperty, clockLabelSizeProperty, clockTickColorProperty, clockVisibleProperty, endTimeProperty, hourFormatProperty, maxDurationMinutesProperty, sliderColorProperty, sliderRangeColorProperty, sliderRangeGradientEndProperty, sliderRangeGradientMiddleProperty, sliderRangeGradientStartProperty, sliderWidthProperty, startTimeProperty, thumbColorProperty, thumbIconEndResProperty, thumbIconSizeProperty, thumbIconStartResProperty, thumbSizeProperty, timeStepMinutesProperty } from './common';
+
+export class TimeRange extends TimeRangeCommon {
+  timeRanger: MSDoubleHandleCircularSlider;
+  createNativeView(): any {
+    this.timeRanger = MSDoubleHandleCircularSlider.new();
+    this.timeRanger._commaSeparatedLabels = '12,1,2,3,4,5,6,7,8,9,10,11';
+    return this.timeRanger;
+  }
+
+  initNativeView(): void {
+    super.initNativeView();
+    try {
+      const _changeHandler = TimeRangerChangeHandlerImpl.initWithOwner(new WeakRef(this));
+      this.timeRanger.addTargetActionForControlEvents(_changeHandler, 'sliderValueChanged', UIControlEvents.ValueChanged);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  disposeNativeView(): void {
+    super.disposeNativeView();
+  }
+}
 
 @NativeClass()
 class TimeRangerChangeHandlerImpl extends NSObject {
@@ -11,57 +34,14 @@ class TimeRangerChangeHandlerImpl extends NSObject {
     return handler;
   }
 
-  public sliderValueChanged(sender: RangeCircularSlider) {
-    console.log('sender.endEditing(true): ', sender.endEditing(true));
-    this._owner.get().sendEvent(TimeRange.dragEvent, { start: sender.startPointValue.toString(), end: sender.endPointValue.toString() });
-    this._owner.get().sendEvent(TimeRange.dragEvent, { start: sender.startPointValue.toString(), end: sender.endPointValue.toString() });
-  }
-
-  public timerValueChanged(sender: RangeCircularSlider) {
-    console.log('timerValueChanged ', sender.startPointValue);
-    this._owner.get().sendEvent(TimeRange.timeChangeEvent, { start: sender.startPointValue.toString(), end: sender.endPointValue.toString(), event: sender.state.toString() });
+  public sliderValueChanged(sender: MSDoubleHandleCircularSlider) {
+    const nSCSwiftTimeRangerExt = NSCSwiftTimeRangerExt.new();
+    let res_data = nSCSwiftTimeRangerExt.updateTextsStartPointValueEndPointValue(sender, sender._currentValue, sender._secondCurrentValue);
+    console.log(res_data[0]);
+    this._owner.get().sendEvent(TimeRange.dragEvent, { start: sender._currentValue.toString(), end: sender._secondCurrentValue.toString() });
   }
 
   public static ObjCExposedMethods = {
-    sliderValueChanged: { returns: interop.types.void, params: [RangeCircularSlider] },
-    timerValueChanged: { returns: interop.types.void, params: [RangeCircularSlider] },
+    sliderValueChanged: { returns: interop.types.void, params: [MSDoubleHandleCircularSlider] },
   };
-}
-
-export class TimeRange extends TimeRangeCommon {
-  timeRanger: RangeCircularSlider;
-  createNativeView(): Object {
-    this.timeRanger = RangeCircularSlider.new().init();
-    return this.timeRanger;
-  }
-
-  initNativeView(): void {
-    super.initNativeView();
-    // this.timeRanger.startThumbStrokeColor=new Color('green').ios;
-    // this.timeRanger.startThumbStrokeHighlightedColor=new Color('blue').ios;
-    // this.timeRanger.startThumbTintColor=new Color('cyan').ios;
-    // this.timeRanger.endThumbStrokeColor=new Color('yellow').ios;
-    // this.timeRanger.endThumbStrokeHighlightedColor=new Color('red').ios;
-    // this.timeRanger.endThumbTintColor=new Color('black').ios;
-    // this.timeRanger.startThumbImage = UIImage.imageNamed("icon");
-  }
-
-  onLoaded(): void {
-    super.onLoaded();
-    try {
-      const _changeHandler = TimeRangerChangeHandlerImpl.initWithOwner(new WeakRef(this));
-      this.timeRanger.addTargetActionForControlEvents(_changeHandler, 'sliderValueChanged', UIControlEvents.ValueChanged);
-      this.timeRanger.addTargetActionForControlEvents(_changeHandler, 'timerValueChanged', UIControlEvents.EditingDidEnd);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  updateData() {
-    console.log('Se ejecuto');
-  }
-
-  disposeNativeView(): void {
-    super.disposeNativeView();
-  }
 }

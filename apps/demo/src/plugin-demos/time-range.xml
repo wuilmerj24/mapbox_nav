@@ -4,6 +4,33 @@
         </ActionBar>
     </Page.actionBar>
     <StackLayout class="p-20">
-      <tr:TimeRange width="100%" height="100%" drag="onDrag"/>
+      <tr:TimeRange 
+        width="100%" 
+        height="100%" 
+        timeChange="onTime" 
+        startTime="10:00" 
+        endTime="1:00" 
+        sliderColor="red" 
+        clockLabelColor="blue"
+        clockTickColor="green"
+        
+        maxDurationMinutes="1"
+        sliderRangeColor="#f4f4f4"
+        thumbColor="#CCCCCC"
+        sliderRangeGradientEnd="red"
+        sliderRangeGradientMiddle="blue"
+        sliderRangeGradientStart="yellow"
+        timeStepMinutes="1"
+        clockVisible="true"
+        clockLabelSize="100"
+        sliderWidth="50"
+        thumbIconSize="100"
+        thumbSize="100"
+        thumbIconStartRes="icon"
+        thumbIconEndRes="icon"
+        clockFace="APPLE"
+        hourFormat="FORMAT_12"
+        drag="onDrag"
+      />
     </StackLayout>
 </Page>
