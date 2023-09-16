@@ -12,19 +12,27 @@
         endTime="1:00" 
         sliderColor="red" 
         clockLabelColor="blue"
-        clockTickColor="green"
+        clockTickColor="green" 
         
         maxDurationMinutes="1"
         sliderRangeColor="#f4f4f4"
+
         thumbColor="#CCCCCC"
+        
         sliderRangeGradientEnd="red"
         sliderRangeGradientMiddle="blue"
         sliderRangeGradientStart="yellow"
+
         timeStepMinutes="1"
+
         clockVisible="true"
-        clockLabelSize="100"
+
+        clockLabelSize="10"
+
         sliderWidth="50"
+
         thumbIconSize="100"
+
         thumbSize="100"
         thumbIconStartRes="icon"
         thumbIconEndRes="icon"
@@ -34,3 +42,6 @@
       />
     </StackLayout>
 </Page>
+
+<!-- 
+         -->
